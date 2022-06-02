@@ -1,0 +1,23 @@
+CREATE TABLE Filme (
+idFilme INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+titulo VARCHAR(200) NOT NULL,
+diretor INT NOT NULL, 
+genero INT NOT NULL, 
+origem INT NOT NULL, 
+duracao INT NOT NULL, 
+ano INT NOT NULL, 
+capa INT NOT NULL,
+trailer INT NOT NULL,
+    COSTRAINT fk_filme_elenco FOREING KEY (idElenco)
+    REFERENCES Elenco (idElenco)
+CREATE TABLE Elenco_do_Filme (
+idAtor INT NOT NULL,
+idIdade INT NOT NULL,
+idNacionalidade INT NOT NULL,
+idFilme INT NOT NULL,
+PRIMARY KAY (idAtor, idIdade, idNacionalidade, idFilme),
+    COSTRAINT fk_do_elenco FOREING KEY (idAtor, idIdade, idNacionalidade)
+    REFERENCES Elenco (idAtor, idIdade, idNacionalidade),
+    COSTRAINT fk_do_filme FOREING KEY (idFilme)
+    REFERENCES Filme (idFilme)
+);
